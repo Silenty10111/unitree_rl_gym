@@ -29,7 +29,24 @@ class GO2RoughCfg( LeggedRobotCfg ):
         action_scale = 0.25
         # decimation: Number of control action updates @ sim DT per policy DT
         decimation = 4
-
+        
+    class terrain(LeggedRobotCfg.terrain):
+        mesh_type = 'trimesh'  # 改为 trimesh 以获得更复杂的物理交互
+        horizontal_scale = 0.05 # 降低缩放以增加地形分辨率
+        vertical_scale = 0.005
+        border_size = 20.
+        curriculum = True
+        num_rows = 10
+        num_cols = 20
+        # 增加对地形起伏的控制
+        terrain_kwargs = {
+            'type': 'rough',
+            'roughness': 0.1,    # 这里设置基础崎岖度
+            'slope_threshold': 0.5
+        }
+        # [平滑, 粗糙斜坡, 上楼梯, 下楼梯, 离散障碍物]
+        terrain_proportions = [0.1, 0.4, 0.1, 0.1, 0.3]
+    
     class asset( LeggedRobotCfg.asset ):
         file = '{LEGGED_GYM_ROOT_DIR}/resources/robots/go2/urdf/go2.urdf'
         name = "go2"
