@@ -103,7 +103,7 @@ class LeggedRobotCfg(BaseConfig):
             termination = -0.0
             tracking_lin_vel = 1.0
             tracking_ang_vel = 0.5
-            lin_vel_z = -0.05# (可选) 如果有惩罚 Z 轴速度的，稍微调小点，因为复杂地形它需要上下起伏
+            lin_vel_z = -1# (可选) 如果有惩罚 Z 轴速度的，稍微调小点，因为复杂地形它需要上下起伏
             ang_vel_xy = -0.05
             orientation = -0.
             torques = -0.00001
