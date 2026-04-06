@@ -103,17 +103,17 @@ class LeggedRobotCfg(BaseConfig):
             termination = -0.0
             tracking_lin_vel = 1.0
             tracking_ang_vel = 0.5
-            lin_vel_z = -2.0
+            lin_vel_z = -0.05# (可选) 如果有惩罚 Z 轴速度的，稍微调小点，因为复杂地形它需要上下起伏
             ang_vel_xy = -0.05
             orientation = -0.
             torques = -0.00001
             dof_vel = -0.
             dof_acc = -2.5e-7
             base_height = -0. 
-            feet_air_time =  1.0
+            feet_air_time =  2.0# 👇 1. 重赏抬腿：原来可能是 1.0，加到 2.0 甚至 3.0，强迫它必须抬腿
             collision = -1.
             feet_stumble = -0.0 
-            action_rate = -0.01
+            action_rate = -0.05 # 👇 2. 重罚抽搐：加大负数，警告它不许高频抖动
             stand_still = -0.
 
         only_positive_rewards = True # if true negative total rewards are clipped at zero (avoids early termination problems)
